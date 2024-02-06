@@ -2,17 +2,74 @@
     width: 25px;
 }
 
-.new-content {
-    padding-left: 25%;
+.new-products {
+    padding-left: 15%;
 }
 
+
 .new-collections {
-    height: 550px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 550px;
     padding-left: 10%;
+    background: url("https://i.ibb.co/Fh4wSj5/regularcollectionsbg.png") center no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    h3 {
+        display: inline-block;
+        background: #f4f4f4;
+    }
+    
+    p {
+        background-color: #f4f4f4;
+        display: inline-block;
+    }
 }
+
+.home-image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin: 0 -10px;
+
+    .home-grid-column {
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        &:nth-child(1),
+        &:nth-child(3) {
+            img:first-child {
+                margin-top: -50%;
+            }
+            img:last-child {
+                margin-bottom: 0px;
+            }
+        }
+
+        &:nth-child(2),
+        &:nth-child(4) {
+            img:last-child {
+                margin-bottom: -50%;
+            }
+        }
+    }
+}
+
+
+
+
 
 $primary: red;
 
