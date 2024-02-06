@@ -2,6 +2,18 @@
     width: 25px;
 }
 
+.new-content {
+    padding-left: 25%;
+}
+
+.new-collections {
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10%;
+}
+
 $primary: red;
 
 @import '../../bootstrap/scss/bootstrap.scss';
