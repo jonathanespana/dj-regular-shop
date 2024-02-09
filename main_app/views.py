@@ -10,3 +10,6 @@ def category(request):
 
 def product_detail(request):
     return render(request, 'main_app/product-detail.html')
+
+def cart(request):
+    return render(request, 'main_app/my-cart.html')

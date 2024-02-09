@@ -1,0 +1,44 @@
+{% extends 'main_app/base.html' %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb mt-4 mb-5">
+        <span class="breadcumb-help-text">You are here:</span>
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Your Cart</li>
+    </ol>
+</nav>
+<h1>my cart</h1>
+<hr>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th></th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>Product Image</td>
+            <td>Product Name & Product Description</td>
+            <td>Product Price</td>
+            <td>Product Quantity</td>
+            <td>Product Subtotal</td>
+            <td>remove item</td>
+        </tr>
+    </thead>
+</table>
+<div class="row row-cols-2">
+    <div class="col">
+        Special Instructions
+    </div>
+    <div class="col text-end">
+        <p>Cart Subtotal</p>
+        <p>Shipping not included</p>
+        <p>All orders are processed in shop's currency, which is USD. The content of your cart may be displayed in another currency, at the most current exchange rate.</p>
+        <button class="btn btn-success">Checkout</button>
+    </div>
+</div>
+{% endblock %}
