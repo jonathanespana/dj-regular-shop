@@ -7,3 +7,6 @@ def home(request):
 
 def category(request):
     return render(request, 'main_app/shop-category.html')
+
+def product_detail(request):
+    return render(request, 'main_app/product-detail.html')
