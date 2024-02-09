@@ -24,77 +24,84 @@
 </head>
 
 <body>
-    <nav class="navbar bg-body-tertiary sticky-top">
-        <div class="container-fluid">
-            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                Menu
-            </button>
-            <a class="navbar-brand" href="/">Regular Shop</a>
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                        <img class="sharpclose" src="https://i.ibb.co/X2qxqPb/sharpclose.png" />
-                        Menu
-                    </button>
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                        Regular Shop
-                    </h5>
+    <main>
+
+        <nav class="navbar bg-body-tertiary sticky-top">
+            <div class="container-fluid">
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    Menu
+                </button>
+                <a class="navbar-brand" href="/">Regular Shop</a>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close">
+                            <img class="sharpclose" src="https://i.ibb.co/X2qxqPb/sharpclose.png" />
+                            Menu
+                        </button>
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                            Regular Shop
+                        </h5>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Dropdown
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="d-flex mt-3" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+            </div>
+        </nav>
+        {% block content %}
+        {% endblock%}
+    
+        <div class="bg-body-tertiary base-footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-2">
+                        <a class="navbar-brand" href="#">Regular Shop</a>
+                    </div>
+                    <div class="col-8">
+                        <ul class="base-footer-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Designed By</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                        </ul>
+            
+                    </div>
+                    <div class="col-2">
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
-    {% block content %}
-    {% endblock%}
-
-    <div class="row bg-body-tertiary base-footer">
-        <div class="col-2">
-            <a class="navbar-brand" href="#">Regular Shop</a>
-        </div>
-        <div class="col-8">
-            <ul class="base-footer-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Designed By</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Privacy Policy</a>
-                </li>
-            </ul>
-
-        </div>
-        <div class="col-2">
-        </div>
-    </div>
+    </main>
 
 </body>
 
