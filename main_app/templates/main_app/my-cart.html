@@ -1,44 +1,140 @@
 {% extends 'main_app/base.html' %}
 
 {% block content %}
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb mt-4 mb-5">
-        <span class="breadcumb-help-text">You are here:</span>
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Your Cart</li>
-    </ol>
-</nav>
-<h1>my cart</h1>
-<hr>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th></th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-            <th></th>
-        </tr>
-        <tr>
-            <td>Product Image</td>
-            <td>Product Name & Product Description</td>
-            <td>Product Price</td>
-            <td>Product Quantity</td>
-            <td>Product Subtotal</td>
-            <td>remove item</td>
-        </tr>
-    </thead>
-</table>
-<div class="row row-cols-2">
-    <div class="col">
-        Special Instructions
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-4 mb-5">
+            <span class="breadcumb-help-text">You are here:</span>
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Your Cart</li>
+        </ol>
+    </nav>
+    <h1 class="mb-5">my cart</h1>
+    <div class="table-responsive">
+        <table class="table table-borderless align-middle">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th></th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="cart-product-image">
+                            <img src="https://via.placeholder.com/200x300">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-description">
+                            <h5>Regular Shop</h5>
+                            <p>Product Collection X Product Name</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-price">
+                            <p>$69.95</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-quantity">
+                            <p>2</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-subtotal">
+                            <p>$139.90</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-remove">
+                            <button type="button" class="btn btn-danger">X</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="cart-product-image">
+                            <img src="https://via.placeholder.com/200x300">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-description">
+                            <h5>Regular Shop</h5>
+                            <p>Product Collection X Product Name</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-price">
+                            <p>$69.95</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-quantity">
+                            <p>2</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-subtotal">
+                            <p>$139.90</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-remove">
+                            <button type="button" class="btn btn-danger">X</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="cart-product-image">
+                            <img src="https://via.placeholder.com/200x300">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-description">
+                            <h5>Regular Shop</h5>
+                            <p>Product Collection X Product Name</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-price">
+                            <p>$69.95</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-quantity">
+                            <p>2</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-subtotal">
+                            <p>$139.90</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-remove">
+                            <button type="button" class="btn btn-danger">X</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="col text-end">
-        <p>Cart Subtotal</p>
-        <p>Shipping not included</p>
-        <p>All orders are processed in shop's currency, which is USD. The content of your cart may be displayed in another currency, at the most current exchange rate.</p>
-        <button class="btn btn-success">Checkout</button>
+    <div class="row row-cols-2 mb-5">
+        <div class="col">
+            Special Instructions
+        </div>
+        <div class="col text-end">
+            <p>Cart Subtotal</p>
+            <p class="mb-5">Shipping not included</p>
+            <p class="mb-5">All orders are processed in the Regular Shop's local currency, which is USD. The content of your cart may be displayed in another currency, at the most current exchange rate.</p>
+            <button class="btn btn-success">Checkout</button>
+        </div>
     </div>
 </div>
 {% endblock %}
