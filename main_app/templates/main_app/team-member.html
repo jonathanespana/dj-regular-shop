@@ -1,0 +1,91 @@
+{% extends 'main_app/base.html' %}
+
+{% block content %}
+
+<row class="new-collections-row">
+    <div class="member-highlight">
+        <div class="new-collections-heading">
+            <h3>Fullname</h3>
+        </div>
+    </div>
+</row>
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-4 mb-5">
+            <span class="breadcumb-help-text">You are here:</span>
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'team' %}">Team</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'team_member' %}">Fullname</a></li>
+        </ol>
+    </nav>
+    <div class="member-about-me">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet illo iste molestias exercitationem ex, cupiditate fugiat vero voluptates ipsam aperiam quos aspernatur quas voluptatem ea corporis dolore perspiciatis vel dolores asperiores explicabo sapiente nobis. Dolore animi commodi facere ad totam corporis blanditiis alias, in officiis, suscipit quo? Tempora quod maiores laboriosam dicta minima totam et harum aperiam atque, aut, ex beatae quia! Veritatis assumenda, cupiditate veniam ipsam hic ipsa iusto quis voluptatum eum cumque unde fugiat incidunt quod corporis odio.</p>
+    </div>
+    <div class="member-sidebyside-img">
+        <div class="row row-cols-2">
+            <div class="col">
+                <img src="https://via.placeholder.com/300x300" alt="">
+            </div>
+            <div class="col">
+                <img src="https://via.placeholder.com/300x300" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="member-QandA">
+        <div class="row row-cols-2">
+            <div class="col">
+                <p class="member-question">What's your nickname</p>
+                <p class="member-answer">Nickname</p>
+                <p class="member-question">What month is your birthday?</p>
+                <p class="member-answer">Pluto</p>
+                <p class="member-question">What are your current side projects or passions?</p>
+                <p class="member-answer">List of things or one thing</p>
+                <p class="member-question">How many years have you been snowboarding?</p>
+                <p class="member-answer">20ish</p>
+            </div>
+            <div class="col">
+                <p class="member-question">What's your home mountain?</p>
+                <p class="member-answer">Brighton</p>
+                <p class="member-question">What's the reason you keep snowboarding?</p>
+                <p class="member-answer">It's the best</p>
+                <p class="member-question">What's your riding set up look like?</p>
+                <p class="member-answer">DWD Bogart, Union Force, Vans Hi-Standard, L1 Chinos, L1 Stooge's Jacket, Vonzipper Googles</p>
+                <p class="member-question">How has your riding evolved over the years?</p>
+                <p class="member-answer">More front bs and backlips</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="member-slick">
+    <div class="member-item">
+        <img class="" src="https://via.placeholder.com/200x300" alt="...">
+    </div>
+    <div class="member-item">
+        <img class="" src="https://via.placeholder.com/200x300" alt="...">
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="member-more-QandA">
+        <div class="row row-cols-2">
+            <div class="col">
+                <p class="member-question">What's your nickname</p>
+                <p class="member-answer">Nickname</p>
+                <p class="member-question">What month is your birthday?</p>
+                <p class="member-answer">Pluto</p>
+            </div>
+            <div class="col">
+                <p class="member-question">What's your home mountain?</p>
+                <p class="member-answer">Brighton</p>
+                <p class="member-question">What's the reason you keep snowboarding?</p>
+                <p class="member-answer">It's the best</p>
+                <p class="member-question">What's your riding set up look like?</p>
+                <p class="member-answer">DWD Bogart, Union Force, Vans Hi-Standard, L1 Chinos, L1 Stooge's Jacket, Vonzipper Googles</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

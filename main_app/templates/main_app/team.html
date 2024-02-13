@@ -1,0 +1,40 @@
+{% extends 'main_app/base.html' %}
+
+{% block content %}
+
+<div class="container-fluid text-center mb-5 team-member-grid">
+    <div class="row row-cols-3">
+        <div class="col">
+            <a href="{% url 'team_member' %}">
+                <div class="team-member-box">
+                    <img src="https://via.placeholder.com/300x300" alt="">
+                    <div class="team-member-name">
+                        <p>Full Name</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="#">
+                <div class="team-member-box">
+                    <img src="https://via.placeholder.com/300x300" alt="">
+                    <div class="team-member-name">
+                        <p>Full Name</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="#">
+                <div class="team-member-box">
+                    <img src="https://via.placeholder.com/300x300" alt="">
+                    <div class="team-member-name">
+                        <p>Full Name</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

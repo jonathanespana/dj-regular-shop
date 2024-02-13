@@ -2,29 +2,13 @@
 
 {% block content %}
 
-<div class="product-detail-header">
-    <h2>Product Name</h2>
-</div>
 <div class="product-detail-slider">
     <div class="image-slick">
+        {% for productimage in product.productimage_set.all %}
         <div class="image-item">
-            <img class="" src="https://via.placeholder.com/200x300" alt="...">
+            <img class="" src="{{ productimage.image_url}}" alt="...">
         </div>
-        <div class="image-item">
-            <img class="" src="https://via.placeholder.com/200x300" alt="...">
-        </div>
-        <div class="image-item">
-            <img class="" src="https://via.placeholder.com/200x300" alt="...">
-        </div>
-        <div class="image-item">
-            <img class="" src="https://via.placeholder.com/200x300" alt="...">
-        </div>
-        <div class="image-item">
-            <img class="" src="https://via.placeholder.com/200x300" alt="...">
-        </div>
-        <div class="image-item">
-            <img class="" src="https://via.placeholder.com/200x300" alt="...">
-        </div>
+        {% endfor %}
     </div>
 </div>
 <hr>
@@ -32,16 +16,19 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-4 mb-5">
             <span class="breadcumb-help-text">You are here:</span>
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item">Category Name</li>
-            <li class="breadcrumb-item active" aria-current="page">Product Name</li>
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'category' %}">Category Name</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'product_detail' product.id %}">
+            {{product.product_name }}
+            </a></li>
         </ol>
     </nav>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, sequi aliquid. Placeat non commodi quod
-        nesciunt, amet qui ea error odit pariatur mollitia natus, magni inventore animi officia unde quas! Cum, modi
-        ipsam ratione nostrum sunt nobis ad numquam illo ea, maxime est quod neque nulla alias perspiciatis atque,
-        exercitationem ex quisquam molestias. Sequi suscipit possimus sit amet, id praesentium!
+    <div class="product-detail-header">
+        <h2>{{ product.product_name }}</h2>
+        <p>${{ product.price }}</p>
+    </div>
+    <p class="text-center">
+        {{ product.product_description }}
     </p>
     <div class="container text-center">
         <div class="row row-cols-1 row-cols-md-2">
@@ -66,12 +53,7 @@
             <div class="col">
                 <h5>Fabric</h5>
                 <ul>
-                    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, adipisci!</li>
-                    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, adipisci!</li>
-                    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, adipisci!</li>
-                    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, adipisci!</li>
-                    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, adipisci!</li>
-                    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, adipisci!</li>
+                    <li>{{ product.product_fabrics }}</li>
                 </ul>
                 <h5>Materials</h5>
                 <ul>
@@ -80,7 +62,7 @@
                     <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, adipisci!</li>
                 </ul>
                 <h5>Sizes</h5>
-                <p>XS, S, M, L, XL, XXL</p>
+                <p>XS {{ product.xs }}, S {{ product.s }}, M {{ product.m }}, L {{ product.l }}, XL {{ product.xl }}, XXL {{ product.xxl }}</p>
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <button type="button" class="btn btn-success">Add to Cart</button>
                     <button type="button" class="btn btn-warning">What's my Size?</button>
@@ -104,7 +86,7 @@
             <p>icon: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, error!</p>
             <hr>
         </div>
-        
+
         <div class="col">
             <p>icon: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, error!</p>
             <hr>
@@ -113,7 +95,7 @@
             <p>icon: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, error!</p>
             <hr>
         </div>
-        
+
         <div class="col">
             <p>icon: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, error!</p>
             <hr>
@@ -122,7 +104,7 @@
             <p>icon: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, error!</p>
             <hr>
         </div>
-        
+
         <div class="col">
             <p>icon: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, error!</p>
             <hr>
@@ -131,7 +113,7 @@
             <p>icon: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, error!</p>
             <hr>
         </div>
-        
+
         <div class="col">
             <p>icon: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, error!</p>
             <hr>
@@ -158,7 +140,8 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, distinctio.</p>
         </div>
     </div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ex esse tempora a tempore neque doloremque quisquam sunt ipsum nisi.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ex esse tempora a tempore neque doloremque quisquam
+        sunt ipsum nisi.</p>
 </div>
 <div class="container mb-5">
     <table class="table">
