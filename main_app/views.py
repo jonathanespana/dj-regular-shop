@@ -29,3 +29,6 @@ def team(request):
 
 def team_member(request):
     return render(request, 'main_app/team-member.html')
+
+def checkout(request):
+    return render(request, 'main_app/checkout.html')

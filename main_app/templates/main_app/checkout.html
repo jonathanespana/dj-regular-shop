@@ -1,0 +1,152 @@
+{% extends 'main_app/base.html' %}
+{% block content %}
+<div class="checkout">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col">
+                <form method="post">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend>
+                            <h1>Checkout</h1>
+                        </legend>
+                        <hr>
+                        <legend>
+                            <h3>Contact</h3>
+                        </legend>
+                        <hr>
+                        <div>
+                            <input type="email" placeholder="Email">
+                        </div>
+                        <div>
+                            <input type="radio" id="email-offers"><label for="email-offers">Email me with news and
+                                offers</label>
+                        </div>
+                        <legend>
+                            <h3>Delivery</h3>
+                        </legend>
+                        <hr>
+                        <div>
+                            <select>
+                                <option>
+                                    United States
+                                </option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="First Name"><input type="text" placeholder="Last Name">
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Company (optional)">
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Address">
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Apt, suite, etc. (optional)">
+                        </div>
+                        <div>
+                            <input type="text" placeholder="City">
+                            <select>
+                                <option>
+                                    ST
+                                </option>
+                            </select>
+                            <input type="text" placeholder="Zipcode">
+                        </div>
+                        <div><label for="shipping-options">Shipping Options</label></p>
+                            <div>
+                                <ul>
+                                    <li><input type="radio" name="shipping_option">Standard Shipping (4 to 5 days)</li>
+                                    <li><input type="radio" name="shipping_option">Express Shipping (2 to 3 days)</li>
+                                    <li><input type="radio" name="shipping_option">Overnight Shipping (1 to 2 days)</li>
+                                </ul>
+                            </div>
+                            <legend>
+                                <h3>Payment</h3>
+                            </legend>
+                            <p>All transactions are secure and encrypted</p>
+                            <hr>
+                            <div>
+                                <input type="text" name="cc_number" id="cc_number" placeholder="Credit Card Number" min="16" max="20">
+                            </div>
+                            <div>
+                                <input type="text" name="cc_exp" id="exp" placeholder="(MM/YY)" min="5" max="5"><input type="text" min="3" max="5" placeholder="CCV">
+                            </div>
+                            <div>
+                                <input type="text" name="cc_name" id="cc_name" placeholder="Name on card">
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-success">Place Order</button>
+                            </div>
+                    </fieldset>
+            </div>
+            <div class="col">
+                <h2>Order Summary</h2>
+                <hr>
+                <div class="table-reponsive">
+                    <table class="table table-borderless align-middle">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="checkout-summary-img">
+                                        <img src="https://via.placeholder.com/90x120" alt="">
+                                        <p>4</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p>product name</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        product subtotal
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="checkout-summary-img">
+                                        <img src="https://via.placeholder.com/90x120" alt="">
+                                        <p>4</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p>product name</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        product subtotal
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <input type="text" name="discount_code" id="discount_code" placeholder="Discount code"><button class="btn btn-warning">Apply</button>
+                    </div>
+                </form>
+                    <div class="table-responsive">
+                        <table class="table table-borderless align-bottom">
+                            <tbody>
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td>$180.95</td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping</td>
+                                    <td>$14.95</td>
+                                </tr>
+                                <tr>
+                                    <td>Total</td>
+                                    <td>usd $195.90</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
