@@ -1,4 +1,3 @@
-from django.contrib.postgres.fields import ArrayField
 
 from django.db import models
 
@@ -32,6 +31,12 @@ class Product(models.Model):
     xl = models.IntegerField(default=0)
     xxl = models.IntegerField(default=0)
     fits_all = models.IntegerField(default=0)
+    slug = models.SlugField(default="", null=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ("-created_at",)
 
     
     def __str__(self):
@@ -42,3 +47,13 @@ class ProductImage(models.Model):
     image_name = models.CharField(max_length= 150)
     image_url = models.URLField(max_length=200)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+class ProductPrice(models.Model):
+    price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
+    description = models.CharField(max_length=200, default="")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return f"{self.product.product_name} {self.price}"
