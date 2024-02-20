@@ -1,11 +1,16 @@
 from django.http import Http404
 from django.shortcuts import render, redirect
+from django.conf import settings
 
+import stripe
 import uuid
 import boto3
 from botocore.exceptions import ClientError
 
-from .models import Product, ProductImage
+from .models import Product, ProductImage, Cart, CartItem
+from .forms import AddToCartForm
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'regularshop'
@@ -13,6 +18,8 @@ BUCKET = 'regularshop'
 # Create your views here.
 
 def home(request):
+
+
     return render(request, 'main_app/home.html')
 
 def category(request):
@@ -21,9 +28,10 @@ def category(request):
     return render(request, 'main_app/shop-category.html', context)
 
 def product_detail(request, product_id):
+    form = AddToCartForm()
     try:
         product = Product.objects.get(id=product_id)
-        context = { 'product': product}
+        context = { 'product': product, 'form': form}
     except Product.DoesNotExist:
         raise Http404("Product does not exist")
     return render(request, 'main_app/product-detail.html' , context)
@@ -51,6 +59,38 @@ def add_photo(request, product_id):
 
 def cart(request):
     return render(request, 'main_app/my-cart.html')
+
+def add_to_cart(request, product_id):
+    if request.method == "POST":
+
+        form = AddToCartForm(request.POST)
+
+        if form.is_valid():
+            size_choice = form.cleaned_data["size_choice"]
+            color_choice = form.cleaned_data["color_choice"]
+            quantity = form.cleaned_data["quantity"]
+
+            if request.session.get("nonuser"):
+                cart = Cart.objects.get(session_id = request.session['nonuser'], completed=False)
+                cartitem, created = CartItem.objects.get_or_create(cart=cart, product_id=product_id, quantity=quantity, size_choice=size_choice, color_choice=color_choice)
+                cartitem.save()
+                num_of_item = cart.num_of_items
+
+            else:
+                request.session['nonuser'] = str(uuid.uuid4())
+                cart = Cart.objects.create(session_id = request.session['nonuser'], completed=False)
+                cartitem, created = CartItem.objects.get_or_create(cart=cart, product_id=product_id, quantity=quantity, size_choice=size_choice, color_choice=color_choice)
+                cartitem.save()
+                num_of_item = cart.num_of_items
+
+                print(cartitem)
+    else:
+        form = AddToCartForm()
+
+    return redirect('product_detail', product_id=product_id)
+
+
+
 
 def team(request):
     return render(request, 'main_app/team.html')

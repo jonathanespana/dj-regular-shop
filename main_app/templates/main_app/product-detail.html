@@ -27,8 +27,8 @@
             <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
             <li class="breadcrumb-item"><a href="{% url 'category' %}">Category Name</a></li>
             <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'product_detail' product.id %}">
-            {{product.product_name }}
-            </a></li>
+                    {{product.product_name }}
+                </a></li>
         </ol>
     </nav>
     <div class="product-detail-header">
@@ -69,12 +69,14 @@
                     <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, adipisci!</li>
                     <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, adipisci!</li>
                 </ul>
-                <h5>Sizes</h5>
-                <p>XS {{ product.xs }}, S {{ product.s }}, M {{ product.m }}, L {{ product.l }}, XL {{ product.xl }}, XXL {{ product.xxl }}</p>
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button type="button" class="btn btn-success">Add to Cart</button>
-                    <button type="button" class="btn btn-warning">What's my Size?</button>
-                </div>
+                <form action="{% url 'add_to_cart' product.id %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <input type="submit" class="btn btn-success" value="Add to Cart" />
+                        <button type="button" class="btn btn-warning">What's my Size?</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

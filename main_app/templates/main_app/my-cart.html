@@ -23,6 +23,47 @@
                 </tr>
             </thead>
             <tbody>
+                {% for item in cart.cartitem_set.all %}
+                <tr>
+                    <td>
+                        <div class="cart-product-image">
+                            <img src="https://via.placeholder.com/200x300">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-description">
+                            <h5>Regular Shop</h5>
+                            <p>{{ item.product.product_name }} - {{ item.size_choice}}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-price">
+                            <p>${{ item.product.price }}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-quantity">
+                            <p>{{ item.quantity}}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-subtotal">
+                            <p>${{ item.price }}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cart-product-remove">
+                            <button type="button" class="btn btn-danger">X</button>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td>
+                        <p>Your cart is empty</p>
+                    </td>
+                </tr>
+                {% endfor %}
                 <tr>
                     <td>
                         <div class="cart-product-image">

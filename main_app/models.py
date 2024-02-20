@@ -51,6 +51,7 @@ class ProductImage(models.Model):
     def __str__(self) -> str:
         return f"Photo for Product:{self.product.product_name} @{self.image_url}"
 
+
 class ProductPrice(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     description = models.CharField(max_length=200, default="")
@@ -60,3 +61,39 @@ class ProductPrice(models.Model):
 
     def __str__(self) -> str:
         return f"{self.product.product_name} {self.price}"
+    
+
+class Cart(models.Model):
+    session_id = models.CharField(max_length=100, null=True, blank=True)
+    completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.session_id
+    
+    @property
+    def total_price(self):
+        cartitems = self.cartitem_set.all()
+        total = sum([item.price for item in cartitems])
+        return total
+    
+    @property
+    def num_of_items(self):
+        cartitems = self.cartitem_set.all()
+        quantity = sum([item.quantity for item in cartitems])
+        return quantity
+    
+
+class CartItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    size_choice = models.CharField(max_length=10, default="")
+    color_choice = models.CharField(max_length=20, default="")
+    quantity = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.product.product_name
+    
+    @property
+    def price(self):
+        new_price = self.product.price * self.quantity
+        return new_price
