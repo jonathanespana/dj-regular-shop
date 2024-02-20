@@ -4,13 +4,21 @@
 
 <div class="product-detail-slider">
     <div class="image-slick">
-        {% for productimage in product.productimage_set.all %}
+        {% for image in product.productimage_set.all %}
         <div class="image-item">
-            <img class="" src="{{ productimage.image_url}}" alt="...">
+            <img class="" src="{{ image.image_url}}" alt="...">
         </div>
+        {% empty %}
+        <p class="text-warning-emphasis">No Photos Available</p>
         {% endfor %}
     </div>
 </div>
+<form action="{% url 'add_photo' product.id %}" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <input type="file" name="photo-file">
+    <br><br>
+    <input type="submit" value="Upload Photo">
+</form>
 <hr>
 <div class="container">
     <nav aria-label="breadcrumb">

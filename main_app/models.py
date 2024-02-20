@@ -44,9 +44,12 @@ class Product(models.Model):
 
 
 class ProductImage(models.Model):
-    image_name = models.CharField(max_length= 150)
+    image_name = models.CharField(max_length= 250)
     image_url = models.URLField(max_length=200)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f"Photo for Product:{self.product.product_name} @{self.image_url}"
 
 class ProductPrice(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
