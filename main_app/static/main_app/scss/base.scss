@@ -4,8 +4,25 @@ body {
 
 
 .sharpclose {
-    width: 25px;
+    width: 1.5em;
+    opacity: 0.7;
 }
+
+.my-cart-icon {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.nav-item {
+    button.btn.dropdown-toggle.show {
+        border: none;
+    }
+
+    ul.dropdown-menu.show {
+        border: none;
+    }
+}
+
 
 .base-footer {
 

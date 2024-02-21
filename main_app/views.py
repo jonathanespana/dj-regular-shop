@@ -2,6 +2,7 @@ from django.http import Http404
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.views import View
+from django.views.generic import TemplateView
 
 import stripe
 import uuid
@@ -115,8 +116,11 @@ class CreateStripeCheckoutSessionView(View):
         )
         return redirect(checkout_session.url)
 
+class SuccessView(TemplateView):
+    template_name = "main_app/success.html"
 
-
+class CancelView(TemplateView):
+    template_name = "main_app/cancel.html"
 
 def team(request):
     return render(request, 'main_app/team.html')
