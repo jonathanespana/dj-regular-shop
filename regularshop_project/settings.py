@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'stripe',
 ]
 
 MIDDLEWARE = [
@@ -145,6 +146,9 @@ COMPRESS_PRECOMPILERS = (
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+PAYMENT_SUCCESS_URL = env("PAYMENT_SUCCESS_URL")
+PAYMENT_CANCEL_URL = env("PAYMENT_CANCEL_URL")
 
 STRIPE_PUBLISHABLE_KEY = env('STRIPE_TEST_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = env('STRIPE_TEST_SECRET_KEY')

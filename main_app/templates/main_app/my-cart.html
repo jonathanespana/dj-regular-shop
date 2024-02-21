@@ -171,10 +171,14 @@
             Special Instructions
         </div>
         <div class="col text-end">
-            <p>Cart Subtotal</p>
+            <p>${{ cart.total_price}}</p>
             <p class="mb-5">Shipping not included</p>
-            <p class="mb-5">All orders are processed in the Regular Shop's local currency, which is USD. The content of your cart may be displayed in another currency, at the most current exchange rate.</p>
-            <a class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+            <p class="mb-5">All orders are processed in the Regular Shop's local currency, which is USD. The content of
+                your cart may be displayed in another currency, at the most current exchange rate.</p>
+            <form action="{% url 'create-checkout-session' cart.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Checkout</button>
+            </form>
         </div>
     </div>
 </div>

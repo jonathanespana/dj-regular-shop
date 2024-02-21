@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.conf import settings
+from django.views import View
 
 import stripe
 import uuid
@@ -18,8 +19,6 @@ BUCKET = 'regularshop'
 # Create your views here.
 
 def home(request):
-
-
     return render(request, 'main_app/home.html')
 
 def category(request):
@@ -88,6 +87,33 @@ def add_to_cart(request, product_id):
         form = AddToCartForm()
 
     return redirect('product_detail', product_id=product_id)
+
+class CreateStripeCheckoutSessionView(View):
+    """ Create Stripe checkout session """
+    def post(self, request, *args, **kwargs):
+        cart = Cart.objects.get(session_id = request.session['nonuser'], completed=False)
+        cart_price = cart.total_price
+
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=["card"],
+            line_items=[
+                {
+                    "price_data": {
+                        "currency": "usd",
+                        "unit_amount": int(cart.total_price) * 100,
+                        "product_data": {
+                            "name": cart.session_id,
+                        } 
+                    },
+                "quantity": 1,
+                },
+            ],
+            metadata={"cart_id": cart.id},
+            mode="payment",
+            success_url=settings.PAYMENT_SUCCESS_URL,
+            cancel_url=settings.PAYMENT_CANCEL_URL,
+        )
+        return redirect(checkout_session.url)
 
 
 
