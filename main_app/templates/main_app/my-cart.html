@@ -64,105 +64,6 @@
                     </td>
                 </tr>
                 {% endfor %}
-                <tr>
-                    <td>
-                        <div class="cart-product-image">
-                            <img src="https://via.placeholder.com/200x300">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-description">
-                            <h5>Regular Shop</h5>
-                            <p>Product Collection X Product Name</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-price">
-                            <p>$69.95</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-quantity">
-                            <p>2</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-subtotal">
-                            <p>$139.90</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-remove">
-                            <button type="button" class="btn btn-danger">X</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="cart-product-image">
-                            <img src="https://via.placeholder.com/200x300">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-description">
-                            <h5>Regular Shop</h5>
-                            <p>Product Collection X Product Name</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-price">
-                            <p>$69.95</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-quantity">
-                            <p>2</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-subtotal">
-                            <p>$139.90</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-remove">
-                            <button type="button" class="btn btn-danger">X</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="cart-product-image">
-                            <img src="https://via.placeholder.com/200x300">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-description">
-                            <h5>Regular Shop</h5>
-                            <p>Product Collection X Product Name</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-price">
-                            <p>$69.95</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-quantity">
-                            <p>2</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-subtotal">
-                            <p>$139.90</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cart-product-remove">
-                            <button type="button" class="btn btn-danger">X</button>
-                        </div>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>
@@ -175,10 +76,15 @@
             <p class="mb-5">Shipping not included</p>
             <p class="mb-5">All orders are processed in the Regular Shop's local currency, which is USD. The content of
                 your cart may be displayed in another currency, at the most current exchange rate.</p>
+            {% if cart.id %}
             <form action="{% url 'create-checkout-session' cart.id %}" method="POST">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-primary">Checkout</button>
+                <button type="submit" class="btn btn-success">Checkout</button>
             </form>
+            {% else %}
+                <button class="btn btn-success" disabled>Checkout</button>
+            {% endif %}
+
         </div>
     </div>
 </div>

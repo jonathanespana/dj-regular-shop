@@ -8,6 +8,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regular Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Unica+One&display=swap" rel="stylesheet">
     {% compress css %}
     <link type="text/x-scss" href="{% static 'main_app/scss/base.scss' %}" rel="stylesheet" media="screen">
     <link type="text/x-scss" href="{% static 'slick/slick.scss' %}" rel="stylesheet" media="screen">
@@ -27,114 +31,115 @@
 </head>
 
 <body>
-    <main>
-
-        <nav class="navbar bg-body-tertiary sticky-top">
-            <div class="container">
-                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    Menu
-                </button>
-                <a class="navbar-brand" href="{% url 'home' %}">Regular Shop</a>
-                <a class="btn" href="{% url 'cart' %}"><img class="my-cart-icon"
-                        src="https://regularshop.s3.us-west-1.amazonaws.com/shopping_bag_icon.png" /></a>
-                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
-                    aria-labelledby="offcanvasNavbarLabel">
-                    <div class="container">
-                        <div class="offcanvas-header">
-                            <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                                <img class="sharpclose"
-                                    src="https://regularshop.s3.us-west-1.amazonaws.com/skinny_close.png" />
-                                Menu
-                            </button>
-                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                                <a class="navbar-brand" href="{% url 'home' %}">Regular Shop</a>
-                            </h5>
-                            <a class="btn" href="{% url 'cart' %}"><img class="my-cart-icon"
-                                    src="https://regularshop.s3.us-west-1.amazonaws.com/shopping_bag_icon.png" /></a>
-                        </div>
-                        <div class="offcanvas-body">
-                            <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}"><button class="btn">Home</button></a>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="btn-group dropend">
-                                        <button type="button" class="btn dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            Men
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <!-- Dropdown menu links -->
-                                            <li><a class="dropdown-item" href="{% url 'category' %}">Tops</a></li>
-                                            <li><a class="dropdown-item" href="{% url 'category' %}">Bottoms</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="btn-group dropend">
-                                        <button type="button" class="btn dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            Women
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <!-- Dropdown menu links -->
-                                            <li><a class="dropdown-item" href="{% url 'category' %}">Tops</a></li>
-                                            <li><a class="dropdown-item" href="{% url 'category' %}">Bottoms</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="btn-group dropend">
-                                        <button type="button" class="btn dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            Genderless
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <!-- Dropdown menu links -->
-                                            <li><a class="dropdown-item" href="{% url 'category' %}">Tops</a></li>
-                                            <li><a class="dropdown-item" href="{% url 'category' %}">Bottoms</a></li>
-                                            <li><a class="dropdown-item" href="{% url 'category' %}">Headwear</a></li>
-                                            <li><a class="dropdown-item" href="{% url 'category' %}">Accessories</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'team' %}"><button class="btn">Team</button></a>
-                                </li>
-                            </ul>
-                        </div>
+    <nav class="navbar bg-body-tertiary sticky-top">
+        <div class="container">
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                Menu
+            </button>
+            <a class="navbar-brand" href="{% url 'home' %}">Regular Shop</a>
+            <a class="btn" href="{% url 'cart' %}"><img class="my-cart-icon"
+                    src="https://regularshop.s3.us-west-1.amazonaws.com/shopping_bag_icon.png" /></a>
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="container">
+                    <div class="offcanvas-header">
+                        <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close">
+                            <img class="sharpclose"
+                                src="https://regularshop.s3.us-west-1.amazonaws.com/skinny_close.png" />
+                            Menu
+                        </button>
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                            <a class="navbar-brand" href="{% url 'home' %}">Regular Shop</a>
+                        </h5>
+                        <a class="btn" href="{% url 'cart' %}"><img class="my-cart-icon"
+                                src="https://regularshop.s3.us-west-1.amazonaws.com/shopping_bag_icon.png" /></a>
                     </div>
-                </div>
-            </div>
-        </nav>
-        {% block content %}
-        {% endblock%}
-
-        <div class="bg-body-tertiary base-footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-2">
-                        <a class="navbar-brand" href="{% url 'home' %}">Regular Shop</a>
-                    </div>
-                    <div class="col-8">
-                        <ul class="base-footer-nav">
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Designed By</a>
+                                <a class="nav-link active" aria-current="page" href="{% url 'home' %}"><button
+                                        class="btn">Home</button></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Privacy Policy</a>
+                                <div class="btn-group dropend">
+                                    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Men
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <!-- Dropdown menu links -->
+                                        <li><a class="dropdown-item" href="{% url 'category' %}">Tops</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'category' %}">Bottoms</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="btn-group dropend">
+                                    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Women
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <!-- Dropdown menu links -->
+                                        <li><a class="dropdown-item" href="{% url 'category' %}">Tops</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'category' %}">Bottoms</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="btn-group dropend">
+                                    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Genderless
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <!-- Dropdown menu links -->
+                                        <li><a class="dropdown-item" href="{% url 'category' %}">Tops</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'category' %}">Bottoms</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'category' %}">Headwear</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'category' %}">Accessories</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'team' %}"><button class="btn">Team</button></a>
                             </li>
                         </ul>
-
-                    </div>
-                    <div class="col-2">
                     </div>
                 </div>
             </div>
         </div>
+    </nav>
+    <main>
+
+        {% block content %}
+        {% endblock%}
     </main>
+    <div class="bg-body-tertiary base-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2">
+                    <a class="navbar-brand" href="{% url 'home' %}">Regular Shop</a>
+                </div>
+                <div class="col-8">
+                    <ul class="base-footer-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Designed By</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-2">
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 

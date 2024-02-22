@@ -2,6 +2,9 @@ body {
     min-height: 100vh;
 }
 
+.navbar {
+    font-family: "Unica One", sans-serif;
+}
 
 .sharpclose {
     width: 1.5em;
@@ -14,8 +17,16 @@ body {
 }
 
 .nav-item {
+    button {
+        font-size: 1.5em;
+    }
+
     button.btn.dropdown-toggle.show {
         border: none;
+    }
+
+    ul.dropdown-menu {
+        font-size: 1.5em;
     }
 
     ul.dropdown-menu.show {
@@ -30,7 +41,8 @@ body {
         height: 100px;
     }
 
-    .col-2,.col-8 {
+    .col-2,
+    .col-8 {
         display: flex;
         align-items: center;
     }
@@ -48,6 +60,20 @@ body {
 
     .nav-item {
         margin: 0px 8px;
+    }
+}
+
+main {
+    font-family: "Unica One", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.home {
+    button {
+        font-family: "Unica One", sans-serif;
+        font-weight: 600;
+        font-size: 20px;
     }
 }
 
@@ -136,16 +162,18 @@ body {
         h2 {
             margin: 20px 0;
         }
-
-        button {
-            display: block;
-            margin: 0 auto;
-        }
     }
 
 }
 
 // Shop Category
+.category {
+    button {
+        font-family: "Unica One", sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+    }
+}
 
 .breadcumb-help-text {
     margin-right: 8px
@@ -155,29 +183,47 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 32px;
+
+    a {
+        text-decoration: none;
+        color: #171717;
+        font-size: 20px;
+        font-weight: 600;
+    }
 
     .product-display-image {
         position: relative;
         max-width: 375px;
         height: 100%;
-        
+
         img {
             width: 100%;
             height: 540px;
             object-fit: contain;
         }
-        
+
+
         .product-special-tag {
             position: absolute;
             left: -10px;
             top: 10px;
-            color: #f7f7f7;
             background: #171717;
+
+            a {
+                color: #f7f7f7;
+
+            }
 
             p {
                 margin: 3px;
             }
+        }
+    }
+
+    .product-display-button {
+
+        a {
+            color: #f7f7f7;
         }
     }
 
@@ -203,7 +249,7 @@ body {
         padding-left: 100px;
 
     }
-    
+
     .image-item {
         max-width: 600px !important;
         margin: 0px 12px;
@@ -214,6 +260,51 @@ body {
             object-fit: cover;
         }
     }
+}
+
+.product-detail-header {
+    font-family: "Unica One", sans-serif;
+    color: rgb(98, 114, 131);
+    
+    h2 {
+        font-size: 2.5em;
+        font-weight: 700;
+    }
+
+    p {
+        font-size: 1.6em;
+        font-weight: 700;
+    }
+
+}
+
+.product-detail-buttons {
+    input {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    button {
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+
+.product-more-info {
+    h5 {
+        font-weight: 900;
+        font-size: 1.6em;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            margin-bottom: 8px;
+        }
+    }
+
 }
 
 .fit-guide {
@@ -240,21 +331,19 @@ body {
 
 // Your Cart 
 
-.cart-table-description {
-
-}
+.cart-table-description {}
 
 
 // Team Index
 .team-member-grid {
-    .row > * {
+    .row>* {
         padding-left: 0px;
         padding-right: 0px;
     }
 
     .team-member-box {
         position: relative;
-    
+
         img {
             width: 100%;
         }
@@ -289,7 +378,7 @@ body {
 
 .member-sidebyside-img {
 
-    .row > * {
+    .row>* {
         padding-left: 0px;
         padding-right: 0px;
     }

@@ -1,9 +1,8 @@
 {% extends 'main_app/base.html' %}
 
 {% block content %}
-
-<row class="new-collections-row">
-    <div class="new-collections">
+<div class="category">
+    <div class="new-collections mb-5">
         <div class="new-collections-heading">
             <h3>The Pretty Ordinary Collection</h3>
         </div>
@@ -14,50 +13,49 @@
             <button type="button" class="btn btn-light">View More</button>
         </div>
     </div>
-</row>
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb mt-4 mb-5">
-        <span class="breadcumb-help-text">You are here:</span>
-        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'category' %}">Category Name</a></li>
-    </ol>
-</nav>
-<div class="container text-center mb-5">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
-        {% for product in products %}
-        <div class="col">
-            <div class="product-display">
-                <div class="product-display-image">
-                    <div class="product-special-tag">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-5">
+            <span class="breadcumb-help-text">You are here:</span>
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'category' %}">Category Name</a></li>
+        </ol>
+    </nav>
+    <div class="container text-center mb-5">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
+            {% for product in products %}
+            <div class="col mb-5">
+                <div class="product-display">
+                    <div class="product-display-image mb-3">
+                        <div class="product-special-tag">
+                            <a href="{% url 'product_detail' product.id %}">
+                                <p>special tag</p>
+                            </a>
+                        </div>
                         <a href="{% url 'product_detail' product.id %}">
-                            <p>special tag</p>
+                            {% for productimage in product.productimage_set.all %}
+                            {% if forloop.first %}
+                            <img src="{{ productimage.image_url}}" alt="">
+                            {% endif %}
+                            {% endfor %}
                         </a>
                     </div>
-                    <a href="{% url 'product_detail' product.id %}">
-                        {% for productimage in product.productimage_set.all %}
-                        {% if forloop.first %}
-                        <img src="{{ productimage.image_url}}" alt="">
-                        {% endif %}
-                        {% endfor %}
-                    </a>
-                </div>
-                <div class="product-display-name">
-                    <a href="{% url 'product_detail' product.id %}">
-                        <p>{{ product.product_name }}</p>
-                    </a>
-                </div>
-                <div class="product-display-options">
-                    <ul>
-                        <li>Opt 1</li>
-                    </ul>
-                </div>
-                <div class="product-display-button">
-                    <a class="btn-dark btn" href="{% url 'product_detail' product.id %}">View More</a>
+                    <div class="product-display-name mb-3">
+                        <a href="{% url 'product_detail' product.id %}">
+                            <p>{{ product.product_name }}</p>
+                        </a>
+                    </div>
+                    <div class="product-display-options mb-3">
+                        <ul>
+                            <li>Opt 1</li>
+                        </ul>
+                    </div>
+                    <div class="product-display-button">
+                        <a class="btn-dark btn" href="{% url 'product_detail' product.id %}">View More</a>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    
     </div>
 </div>
 {% endblock %}
