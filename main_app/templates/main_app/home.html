@@ -2,29 +2,35 @@
 
 {% block content %}
 <div class="home">
-    <div class="home-splash mb-5">
-        <div class="row">
-            <div class="col-7">
+    <div class="home-splash">
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col col-md-7">
                 <div class="home-splash-img">
-                    <img src="https://regularshop.s3.us-west-1.amazonaws.com/regular-team-bordered.png"
-                        class="img-fluid" />
+                    <picture>
+                        <source class="img-fluid" media="(min-width: 768px)"
+                        srcset="https://regularshop.s3.us-west-1.amazonaws.com/shedskateparkboys-md.avif" />
+                        <img class="img-fluid" src="https://regularshop.s3.us-west-1.amazonaws.com/shedskateparkboys.avif"
+                            alt="Shed Run Crew 2023">
+                    </picture>
                 </div>
             </div>
-            <div class="col-4 d-flex flex-column justify-content-center">
-                <div>
-                    <p class="text-body">Watch now: <span class="text-body-secondary">>>Bikes n' Boards 2022<< </span>
-                    </p>
-                    <p>Embarking on an oystery odyssey,a group of friends and chopper enthusiasts set their sights on
-                        the
-                        enigmatic shores of the Pacific Northwest</p>
-                </div>
-                <div>
-                    <button type="button" class="btn btn-outline-dark">View More</button>
+            <div class="col col-md-5">
+                <div class="home-splash-content">
+                    <div>
+                        <p class="text-body">Watch now: <span class="text-body-secondary">>>Bikes n' Boards 2022<< </span>
+                        </p>
+                        <p>Embarking on an oystery odyssey,a group of friends and chopper enthusiasts set their sights on
+                            the
+                            enigmatic shores of the Pacific Northwest</p>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-dark">View More</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="home-video mb-5">
+    <div class="home-video">
         <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%">
             <iframe allow="fullscreen" allowfullscreen height="100%"
                 src="https://streamable.com/e/glw5m1?loop=0&nocontrols=1" width="100%"
@@ -32,24 +38,26 @@
         </div>
     </div>
     <div class="home-new">
-        <div class="row mb-5">
-            <div class="col-6 d-flex flex-column justify-content-center">
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col">
                 <div class="new-products">
-                    <p class="text-body">Introducing<span class="text-body-secondary">>>The Regular Essentials<< </span>
-                    </p>
-                    <p>Embarking on an oystery odyssey,a group of friends and chopper enthusiasts set their sights on
-                        the
-                        enigmatic shores of the Pacific Northwest</p>
-                    <div>
-                        <button type="button" class="btn btn-outline-dark">View More</button>
-                    </div>
+                    <div class="home-new-text">
+                        <p class="text-body">Introducing<span class="text-body-secondary">>>The Regular Essentials<< </span>
+                        </p>
+                        <p>Embarking on an oystery odyssey,a group of friends and chopper enthusiasts set their sights on
+                            the
+                            enigmatic shores of the Pacific Northwest</p>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-outline-dark">View More</button>
+                        </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col">
                 <img src="https://i.ibb.co/jzypQL3/shedrun-caps.jpg" class="img-fluid" />
             </div>
         </div>
-        <div class="new-collections mb-5">
+        <div class="new-collections">
             <div class="new-collections-heading">
                 <h3>The Pretty Ordinary Collection</h3>
             </div>
@@ -61,9 +69,9 @@
             </div>
         </div>
     </div>
-    <div class="home-fit-guide mb-5">
-        <div class="row">
-            <div class="col-6 ">
+    <div class="home-fit-guide">
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col">
                 <div class="home-image-grid">
                     <div class="home-grid-column">
                         <img src="https://regularshop.s3.us-west-1.amazonaws.com/lars-shedrun23.png" alt="Image 2">
@@ -87,21 +95,22 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6 d-flex flex-column justify-content-center">
-                <div>
-                    <p class="text-body">Watch now: <span class="text-body-secondary">>>Bikes n' Boards 2022<< </span>
-                    </p>
-                    <p>Embarking on an oystery odyssey,a group of friends and chopper enthusiasts set their sights on
-                        the
-                        enigmatic shores of the Pacific Northwest</p>
-                </div>
-                <div>
-                    <button type="button" class="btn btn-outline-dark">View More</button>
+            <div class="col">
+                <div class="home-guide-content">
+                    <div>
+                        <p class="text-body">Watch now: <span class="text-body-secondary">>>Bikes n' Boards 2022<< </span>
+                        </p>
+                        <p>
+                            Embarking on an oystery odyssey,a group of friends and chopper enthusiasts set their sights on the enigmatic shores of the Pacific Northwest
+                        </p>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-dark">View More</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="product-slick mb-5">
         <div class="product-item">
             <img class="home-product-image" src="https://regularshop.s3.us-west-1.amazonaws.com/pdog-shed23.jpg" alt="...">
