@@ -64,8 +64,8 @@ body {
 }
 
 main {
-    font-family: "Unica One", sans-serif;
-    font-weight: 600;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 500;
     font-size: 20px;
 }
 
@@ -122,7 +122,9 @@ main {
 
     p {
         background-color: #f4f4f4;
-        display: inline-block;
+        width: max-content;
+        max-width: 80vw;
+        
     }
 }
 
@@ -313,15 +315,22 @@ main {
 
 }
 
+.product-detail-form {
+    text-align: center;
+}
+
 .product-detail-buttons {
     input {
         font-size: 20px;
         font-weight: 600;
+        width: 80%;
+        margin-bottom: 10px;
     }
 
     button {
         font-size: 20px;
         font-weight: 600;
+        width: 80%;
     }
 }
 
@@ -340,6 +349,12 @@ main {
         }
     }
 
+}
+
+.product-detail-features {
+    ul > li {
+        margin-bottom: 0;
+    }
 }
 
 .fit-guide {
