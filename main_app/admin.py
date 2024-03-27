@@ -11,11 +11,16 @@ class ProductImageInline(admin.TabularInline):
 
 class ProductAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Product Information', {'fields': ['product_name', 'price', 'slug', 'product_description', 'product_fabrics']}),
+        ('Product Information', {'fields': ['product_name', 'price', 'product_description', 'product_fabrics']}),
         ('Product Categories', {'fields': ['category', 'subcategory']}),
         ('Product Inventory', {'fields': ['xs', 's', 'm', 'l', 'xl', 'xxl', 'fits_all']}),
+        ('Product Slugs', {'fields': ['slug_name', 'slug_category', 'slug_subcategory']}),
     ]
-    prepopulated_fields = {"slug": ["product_name"]}
+    prepopulated_fields = {
+        "slug_name": ["product_name"], 
+        "slug_category": ["category"],
+        "slug_subcategory": ["subcategory"],
+        }
 
     list_display = ['product_name', 'product_description', 'product_fabrics', 'category', 'subcategory']
     inlines = [ProductPriceAdmin, ProductImageInline]

@@ -6,8 +6,8 @@ from .views import CreateStripeCheckoutSessionView, CancelView, SuccessView
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('shop/category/', views.category, name='category'),
-    path('shop/category/<int:product_id>/', views.product_detail, name='product_detail'),
+    path('shop/<slug:slug_category>/<slug:slug_subcategory>/', views.category, name='category'),
+    path('shop/<slug:slug_name>/', views.product_detail, name='product_detail'),
     path('shop/category/<int:product_id>/add_to_cart', views.add_to_cart, name='add_to_cart'),
     path("create-checkout-session/<int:pk>/", CreateStripeCheckoutSessionView.as_view(), name="create-checkout-session"),
     path("success/", SuccessView.as_view(), name="success"),

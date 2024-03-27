@@ -317,6 +317,10 @@ main {
 
 .product-detail-form {
     text-align: center;
+
+    #id_quantity {
+        max-width: 60px;
+    }
 }
 
 .product-detail-buttons {
@@ -357,31 +361,74 @@ main {
     }
 }
 
-.fit-guide {
-    width: 100%;
-    display: flex;
-    justify-content: center;
 
-    .fit-guide-left {
-        background-color: firebrick;
-        width: 220px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.specs-table {
+    font-size: .9rem;
+    max-width: 750px;
 
-    .fit-guide-right {
-        background-color: seagreen;
-        width: 220px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    th {
+        width: 75px;
+
+        .spec-icon {
+            width: 100%;
+
+            .spec-img {
+                width: 75px;
+            }
+        }
     }
 }
 
-// Your Cart 
+.fit-guide {
 
-.cart-table-description {}
+    .fit-guide-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            margin: 5px 0px;
+        }
+    }
+    
+    .fit-guide-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            margin: 5px 0px;
+        }
+    }
+}
+
+.size-table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.size-table  {
+    max-width: 90%;
+    font-size: .9rem;
+
+}
+
+// Your Cart 
+.cart-list-item {
+    display: flex;
+
+    .cart-item-left {
+        margin-right: 20px;
+    }
+
+    .cart-list-btn {
+        margin-left: 20px;
+    }
+}
+
+.table-responsive.cart-table {
+    display: none;
+}
 
 
 // Team Index
@@ -456,3 +503,14 @@ main {
 
 
 @import '../../bootstrap/scss/bootstrap.scss';
+
+@media (min-width: 768px) {
+    .table-responsive.cart-table {
+        display: contents;
+    }
+
+    .cart-list {
+        display: none;
+    }
+
+}

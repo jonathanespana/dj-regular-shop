@@ -22,15 +22,18 @@ BUCKET = 'regularshop'
 def home(request):
     return render(request, 'main_app/home.html')
 
-def category(request):
-    products = Product.objects.all()
-    context = { 'products': products}
+def category(request, slug_category, slug_subcategory):
+    try:
+        products = Product.objects.filter(slug_category=slug_category, slug_subcategory=slug_subcategory)
+        context = { 'products': products, 'slug_category': slug_category, 'slug_subcategory': slug_subcategory}
+    except Product.DoesNotExist:
+        raise Http404("Product does not exists")
     return render(request, 'main_app/shop-category.html', context)
 
-def product_detail(request, product_id):
+def product_detail(request, slug_name):
     form = AddToCartForm()
     try:
-        product = Product.objects.get(id=product_id)
+        product = Product.objects.get(slug_name=slug_name)
         context = { 'product': product, 'form': form}
     except Product.DoesNotExist:
         raise Http404("Product does not exist")
@@ -94,21 +97,25 @@ class CreateStripeCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
         cart = Cart.objects.get(session_id = request.session['nonuser'], completed=False)
         cart_price = cart.total_price
+        cart_items = cart.all_items 
+        cart_lines = []
+        for items in cart_items:
+            cart_item = {
+                "price_data": {
+                    "currency": "usd",
+                    "unit_amount": int(items.product.price) * 100,
+                    "product_data": {
+                        "name": items.product.product_name,
+                        "images": [items.product.main_image.image_url],
+                    } 
+                },
+            "quantity": items.quantity,
+            }
+            cart_lines.append(cart_item)
 
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=["card"],
-            line_items=[
-                {
-                    "price_data": {
-                        "currency": "usd",
-                        "unit_amount": int(cart.total_price) * 100,
-                        "product_data": {
-                            "name": cart.session_id,
-                        } 
-                    },
-                "quantity": 1,
-                },
-            ],
+            line_items = cart_lines,
             metadata={"cart_id": cart.id},
             mode="payment",
             success_url=settings.PAYMENT_SUCCESS_URL,

@@ -10,7 +10,27 @@
         </ol>
     </nav>
     <h1 class="mb-5">my cart</h1>
-    <div class="table-responsive">
+    <div class="cart-list">
+        <ul>
+            {% for item in cart.cartitem_set.all %}
+            <li class="cart-list-item">
+                <div class="cart-item-left">
+                    <img src="https://via.placeholder.com/80x120">
+                </div>
+                <div class="cart-item-right">
+                    <p>{{ item.product.product_name }} - {{item.size_choice}} </p>
+                    <p>${{ item.product.price }}</p>
+                    <p>{{ item.quantity }} <button type="button" class="btn btn-danger cart-list-btn">X</button></p>
+                </div>
+            </li>
+            {% empty %}
+            <li>
+                <p>Your cart is empty</p>
+            </li>                
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="table-responsive cart-table">
         <table class="table table-borderless align-middle">
             <thead>
                 <tr>
@@ -27,7 +47,7 @@
                 <tr>
                     <td>
                         <div class="cart-product-image">
-                            <img src="https://via.placeholder.com/200x300">
+                            <img src="https://via.placeholder.com/80x120">
                         </div>
                     </td>
                     <td>
@@ -67,7 +87,7 @@
             </tbody>
         </table>
     </div>
-    <div class="row row-cols-2 mb-5">
+    <div class="row row-cols-1 row-cols-md-2 mb-5">
         <div class="col">
             Special Instructions
         </div>

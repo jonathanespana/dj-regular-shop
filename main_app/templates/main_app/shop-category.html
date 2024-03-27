@@ -18,7 +18,7 @@
             <ol class="breadcrumb mb-5">
                 <span class="breadcumb-help-text">You are here:</span>
                 <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'category' %}">Category Name</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'category' 'slug_category' 'slug_subcategory' %}">Category Name</a></li>
             </ol>
         </nav>
     </div>
@@ -29,11 +29,11 @@
                 <div class="product-display">
                     <div class="product-display-image mb-3">
                         <div class="product-special-tag">
-                            <a href="{% url 'product_detail' product.id %}">
+                            <a href="{% url 'product_detail' product.slug_name %}">
                                 <p>special tag</p>
                             </a>
                         </div>
-                        <a href="{% url 'product_detail' product.id %}">
+                        <a href="{% url 'product_detail' product.slug_name %}">
                             {% for productimage in product.productimage_set.all %}
                             {% if forloop.first %}
                             <img src="{{ productimage.image_url}}" alt="">
@@ -42,7 +42,7 @@
                         </a>
                     </div>
                     <div class="product-display-name mb-3">
-                        <a href="{% url 'product_detail' product.id %}">
+                        <a href="{% url 'product_detail' product.slug_name %}">
                             <p>{{ product.product_name }}</p>
                         </a>
                     </div>
@@ -52,9 +52,13 @@
                         </ul>
                     </div>
                     <div class="product-display-button">
-                        <a class="btn-dark btn" href="{% url 'product_detail' product.id %}">View More</a>
+                        <a class="btn-dark btn" href="{% url 'product_detail' product.slug_name %}">View More</a>
                     </div>
                 </div>
+            </div>
+            {% empty %}
+            <div class="col">
+                <p>Currently, this category is empty.  Join our newsletter to know when the newest items are available.</p>
             </div>
             {% endfor %}
         </div>

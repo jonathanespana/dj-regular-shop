@@ -4,25 +4,25 @@ from django.db import models
 # Create your models here.
 
 CATEGORIES=(
-    ('G', 'Genderless'),
-    ('M', 'Men'),
-    ('W', 'Women'),
-    ('A', 'Accessories'),
+    ('Genderless', 'Genderless'),
+    ('Men', 'Men'),
+    ('Women', 'Women'),
+    ('Accessories', 'Accessories'),
 )
 
 SUBCATEGORIES=(
-    ('T', 'Tops'),
-    ('B', 'Bottoms'),
-    ('H', 'Headware'),
-    ('A', 'Accessories'),
+    ('Tops', 'Tops'),
+    ('Bottoms', 'Bottoms'),
+    ('Headware', 'Headware'),
+    ('Accessories', 'Accessories'),
 )
 
 class Product(models.Model):
     product_name = models.CharField(max_length=100, default="Add Product Name")
     product_description = models.CharField(max_length=500, default="Add Product Description")
     product_fabrics = models.CharField(max_length=300, default="4way Stretch Recycle Polyester 3L")
-    category = models.CharField(max_length=1, choices=CATEGORIES, default=CATEGORIES[0][0])
-    subcategory = models.CharField(max_length=1, choices=SUBCATEGORIES, default=SUBCATEGORIES[0][0])
+    category = models.CharField(choices=CATEGORIES, default=CATEGORIES[0][0])
+    subcategory = models.CharField(choices=SUBCATEGORIES, default=SUBCATEGORIES[0][0])
     price = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
     xs = models.IntegerField(default=0)
     s = models.IntegerField(default=0)
@@ -31,7 +31,9 @@ class Product(models.Model):
     xl = models.IntegerField(default=0)
     xxl = models.IntegerField(default=0)
     fits_all = models.IntegerField(default=0)
-    slug = models.SlugField(default="", null=False)
+    slug_name = models.SlugField(default="", null=False)
+    slug_category = models.SlugField(default="", null=False)
+    slug_subcategory = models.SlugField(default="", null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -41,6 +43,13 @@ class Product(models.Model):
     
     def __str__(self):
         return self.product_name
+    
+    @property
+    def main_image(self):
+        product_image = self.productimage_set.all()
+        main_image = product_image[0]
+        return main_image
+
 
 
 class ProductImage(models.Model):
@@ -81,6 +90,11 @@ class Cart(models.Model):
         cartitems = self.cartitem_set.all()
         quantity = sum([item.quantity for item in cartitems])
         return quantity
+    
+    @property
+    def all_items(self):
+        cartitems = self.cartitem_set.all()
+        return cartitems
     
 
 class CartItem(models.Model):
