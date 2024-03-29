@@ -6,7 +6,7 @@
         <ol class="breadcrumb my-5">
             <span class="breadcumb-help-text">You are here:</span>
             <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'category' product.slug_category product.slug_subcategory %}">Category Name</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'category' product.slug_category product.slug_subcategory %}">{{product.category}}'s {{product.subcategory}}</a></li>
             <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'product_detail' product.slug_name %}">
                     {{product.product_name }}
                 </a></li>

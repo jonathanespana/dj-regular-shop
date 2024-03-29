@@ -18,7 +18,7 @@
             <ol class="breadcrumb mb-5">
                 <span class="breadcumb-help-text">You are here:</span>
                 <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'category' 'slug_category' 'slug_subcategory' %}">Category Name</a></li>
+                <li class="breadcrumb-item active category-breadcrumb-link" aria-current="page"><a href="{% url 'category' slug_category slug_subcategory %}">{{slug_category}}'s {{slug_subcategory}}</a></li>
             </ol>
         </nav>
     </div>

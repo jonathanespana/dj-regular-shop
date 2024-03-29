@@ -4,16 +4,18 @@
 
 <div class="container-fluid text-center mb-5 team-member-grid">
     <div class="row row-cols-3">
+        {% for member_avatar in team_avatars %}
         <div class="col">
             <a href="{% url 'team_member' %}">
                 <div class="team-member-box">
-                    <img src="https://via.placeholder.com/300x300" alt="">
+                    <img src={{member_avatar}} alt="">
                     <div class="team-member-name">
                         <p>Full Name</p>
                     </div>
                 </div>
             </a>
         </div>
+        {% empty %}
         <div class="col">
             <a href="#">
                 <div class="team-member-box">
@@ -24,6 +26,7 @@
                 </div>
             </a>
         </div>
+        {% endfor %}
         <div class="col">
             <a href="#">
                 <div class="team-member-box">

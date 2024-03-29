@@ -36,34 +36,19 @@ body {
 
 
 .base-footer {
-
-    .row {
-        height: 100px;
-    }
-
-    .col-2,
-    .col-8 {
-        display: flex;
-        align-items: center;
-    }
-
-    .col-8 {
-        justify-content: center;
+    .navbar-brand {
+        padding: 3px 0px;
     }
 }
 
 .base-footer-nav {
-    display: flex;
     margin: 0px;
     list-style: none;
-    padding: 0px;
-
-    .nav-item {
-        margin: 0px 8px;
-    }
+    padding: 3px 0px 3px 0px;
 }
 
 main {
+    min-height: 85vh;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 500;
     font-size: 20px;
@@ -216,6 +201,10 @@ main {
     margin-right: 8px
 }
 
+.category-breadcrumb-link {
+    text-transform: capitalize;
+}
+
 .product-display {
     display: flex;
     flex-direction: column;
@@ -274,6 +263,8 @@ main {
         margin: 0px;
     }
 }
+
+
 
 
 // Product Details
@@ -505,6 +496,14 @@ main {
 @import '../../bootstrap/scss/bootstrap.scss';
 
 @media (min-width: 768px) {
+    .base-footer-nav {
+        display: flex;
+
+        li {
+            padding: 3px 0px 3px 12px;
+        }
+    }
+
     .table-responsive.cart-table {
         display: contents;
     }

@@ -65,7 +65,7 @@ def cart(request):
 
 def add_to_cart(request, product_id):
     if request.method == "POST":
-
+        product = Product.objects.get(id = product_id)
         form = AddToCartForm(request.POST)
 
         if form.is_valid():
@@ -90,12 +90,12 @@ def add_to_cart(request, product_id):
     else:
         form = AddToCartForm()
 
-    return redirect('product_detail', product_id=product_id)
+    return redirect('product_detail', slug_name=product.slug_name)
 
 class CreateStripeCheckoutSessionView(View):
     """ Create Stripe checkout session """
-    def post(self, request, *args, **kwargs):
-        cart = Cart.objects.get(session_id = request.session['nonuser'], completed=False)
+    def post(self, request, cart_id, *args, **kwargs):
+        cart = Cart.objects.get( id=cart_id, completed=False)
         cart_price = cart.total_price
         cart_items = cart.all_items 
         cart_lines = []
@@ -130,7 +130,26 @@ class CancelView(TemplateView):
     template_name = "main_app/cancel.html"
 
 def team(request):
-    return render(request, 'main_app/team.html')
+    team_avatars = ['https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar1.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar2.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar3.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar4.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar5.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar6.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar7.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar8.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar9.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar10.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar11.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar12.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar13.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar14.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar15.png',
+                    'https://regularshop.s3.us-west-1.amazonaws.com/team-avatars/avatar16.png',
+                    ]
+    context = { 'team_avatars': team_avatars}
+
+    return render(request, 'main_app/team.html', context)
 
 def team_member(request):
     return render(request, 'main_app/team-member.html')
