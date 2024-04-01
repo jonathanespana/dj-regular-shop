@@ -111,3 +111,8 @@ class CartItem(models.Model):
     def price(self):
         new_price = self.product.price * self.quantity
         return new_price
+    
+
+""" ***** Create Order ****** """
+""" *** takes in a completed cart, customer info to update and send product: full name, address, shipping method, phone number, email address *** """
+
