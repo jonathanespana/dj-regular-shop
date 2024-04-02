@@ -116,8 +116,52 @@ class CreateStripeCheckoutSessionView(View):
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=["card"],
             line_items = cart_lines,
+            shipping_options = [
+                {
+                "shipping_rate_data": {
+                    "type": 'fixed_amount',
+                    "fixed_amount": {
+                    "amount": 500,
+                    "currency": 'usd',
+                    },
+                    "display_name": 'Standard',
+                    "delivery_estimate": {
+                    "minimum": {
+                        "unit": 'business_day',
+                        "value": 3,
+                    },
+                    "maximum": {
+                        "unit": 'business_day',
+                        "value": 5,
+                    },
+                    },
+                },
+                },
+                {
+                "shipping_rate_data": {
+                    "type": 'fixed_amount',
+                    "fixed_amount": {
+                    "amount": 1500,
+                    "currency": 'usd',
+                    },
+                    "display_name": 'Overnight',
+                    "delivery_estimate": {
+                    "minimum": {
+                        "unit": 'business_day',
+                        "value": 1,
+                    },
+                    "maximum": {
+                        "unit": 'business_day',
+                        "value": 2,
+                    },
+                    },
+                },
+                },
+            ],
             metadata={"cart_id": cart.id},
             mode="payment",
+            automatic_tax={"enabled": True},
+            shipping_address_collection = { "allowed_countries": ["US"]},
             success_url=settings.PAYMENT_SUCCESS_URL,
             cancel_url=settings.PAYMENT_CANCEL_URL,
         )
